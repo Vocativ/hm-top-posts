@@ -101,6 +101,7 @@ class HMTP_Top_Posts {
 			if ( $results = get_transient( $this->query_id ) )
 				return $results;
 
+
 			$results = $this->fetch_results( $args );
 
 			set_transient( $this->query_id, $results, $this->expiry );
@@ -119,8 +120,6 @@ class HMTP_Top_Posts {
 	 */
 	function fetch_results( $args ) {
 
-		$dimensions  = array( 'pagePath' );
-		$metrics     = array( 'pageviews' );
 		$max_results = 1000;
 
 		// Build up a list of top posts.
@@ -136,10 +135,10 @@ class HMTP_Top_Posts {
 					'ga:' . $this->ga_property_profile_id,
 					$args['start_date'],
 					$args['end_date'],
-					'ga:pageviews',
+					'ga:uniquePageviews',
 					array(
 						'dimensions'  => 'ga:pagePath',
-						'sort'        => '-ga:pageviews',
+						'sort'        => '-ga:uniquePageviews',
 						'max-results' => $max_results,
 						'start-index' => $start_index
 					)
