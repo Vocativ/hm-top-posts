@@ -86,30 +86,7 @@ class HMTP_Top_Posts {
 					$term = get_term_by( 'name', $term, $args['taxonomy'] )->term_id;
 			}
 
-		$this->query_id = 'hmtp_' . hash( 'md5', $this->ga_property_profile_id . json_encode( $args ) );
-
-		// If TLC Transients exists, use that.
-		if ( class_exists( 'TLC_Transient' ) ) {
-			$results = tlc_transient( $this->query_id )->expires_in( $this->expiry )->background_only()->updates_with( array( $this, 'fetch_results' ), array( $args ) )->get();
-
-			return $results;
-
-			// Fall back to boring old normal transients.
-		}
-		else {
-
-			if ( $results = get_transient( $this->query_id ) )
-				return $results;
-
-
-			$results = $this->fetch_results( $args );
-
-			set_transient( $this->query_id, $results, $this->expiry );
-
-			return $results;
-
-		}
-
+		return $this->fetch_results( $args );
 	}
 
 	/**
