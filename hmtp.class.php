@@ -131,6 +131,7 @@ class HMTP_Top_Posts {
 			if ( count( $results->getRows() ) < 1 )
 				break;
 
+
 			foreach ( $results->getRows() as $result ) {
 
 				// Get the post id from the url
@@ -160,10 +161,15 @@ class HMTP_Top_Posts {
 				}
 
 				// Build an array of $post_id => $pageviews
-				$top_posts[$post_id] = array(
-					'post_id' => $post_id,
-					'views'   => $result[1],
-				);
+				if ( ! isset( $top_posts[$post_id] ) ) {
+					$top_posts[$post_id] = array(
+						'post_id' => $post_id,
+						'views'   => $result[1],
+					);
+				}
+				else {
+					$top_posts[$post_id]['views'] += $result[1];
+				}
 
 				// Once we have enough posts we can break out of this.
 				if ( isset( $top_posts ) && count( $top_posts ) >= $args['count'] )

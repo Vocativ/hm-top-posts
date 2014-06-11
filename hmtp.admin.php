@@ -178,23 +178,6 @@ class HMTP_Admin {
 
 		<?php
 
-		// Demo.
-		$results = hmtp_get_top_posts( array() );
-
-		?>
-
-		<h4>Top Posts</h4>
-
-		<?php if ( $results ) : ?>
-			<ul>
-				<?php foreach ( $results as $post ) : ?>
-					<li><?php printf( '%s (%d)', get_the_title( $post['post_id'] ), $post['views'] ); ?></li>
-				<?php endforeach; ?>
-			</ul>
-		<?php else : ?>
-			<p>No posts found</p>
-		<?php endif;
-
 	}
 
 	/**
