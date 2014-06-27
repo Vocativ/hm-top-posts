@@ -56,7 +56,7 @@ class HMTP_Top_Posts {
 	 * @param                         $ga_property_profile_id
 	 * @param Google_AnalyticsService $analytics
 	 */
-	function __construct( $ga_property_profile_id, Google_AnalyticsService $analytics ) {
+	function __construct( $ga_property_profile_id, Google_Service_Analytics $analytics ) {
 
 		$this->args_defaults['start_date'] = date( 'Y-m-d', time() - 2628000 );
 		$this->args_defaults['end_date']   = date( 'Y-m-d', time() );
