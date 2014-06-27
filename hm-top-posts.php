@@ -12,8 +12,8 @@ Author URI: http://hmn.md
  */
 define( 'HMTP_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 
-require_once HMTP_PLUGIN_PATH . 'google-api-php-client/src/Google_Client.php';
-require_once HMTP_PLUGIN_PATH . 'google-api-php-client/src/contrib/Google_AnalyticsService.php';
+//require_once HMTP_PLUGIN_PATH . 'google-api-php-client/src/Google_Client.php';
+//require_once HMTP_PLUGIN_PATH . 'google-api-php-client/src/contrib/Google_AnalyticsService.php';
 
 require_once HMTP_PLUGIN_PATH . 'hmtp.class.php';
 require_once HMTP_PLUGIN_PATH . 'hmtp.admin.php';
@@ -49,7 +49,7 @@ class HMTP_Plugin {
 
 	/**
 	 * An instance of the Google Analytics Service class
-	 * @var Google_AnalyticsService
+	 * @var Google_Analytics_Service
 	 */
 	private $ga_service;
 
@@ -99,12 +99,12 @@ class HMTP_Plugin {
 		$this->ga_client->setClientSecret( $this->settings['ga_client_secret'] );
 		$this->ga_client->setDeveloperKey( $this->settings['ga_api_key'] );
 		$this->ga_client->setRedirectUri( $this->settings['ga_redirect_url'] );
-		$this->ga_client->setUseObjects( true );
+		//$this->ga_client->setUseObjects( true );
 
 		if ( $this->token )
 			$this->ga_client->setAccessToken( $this->token );
 
-		$this->ga_service = new Google_AnalyticsService( $this->ga_client );
+		$this->ga_service = new Google_Service_Analytics( $this->ga_client );
 
 		add_action( 'init', array( $this, 'init' ) );
 

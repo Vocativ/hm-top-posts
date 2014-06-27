@@ -39,7 +39,7 @@ class HMTP_Admin {
 	 * @param Google_Client           $ga_client
 	 * @param Google_AnalyticsService $ga_analytics
 	 */
-	public function __construct( $settings = array(), Google_Client $ga_client, Google_AnalyticsService $ga_analytics ) {
+	public function __construct( $settings = array(), Google_Client $ga_client, Google_Service_Analytics $ga_analytics ) {
 
 		$this->settings   = $settings;
 		$this->ga_client  = $ga_client;
