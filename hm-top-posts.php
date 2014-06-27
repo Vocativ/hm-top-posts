@@ -12,9 +12,6 @@ Author URI: http://hmn.md
  */
 define( 'HMTP_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 
-//require_once HMTP_PLUGIN_PATH . 'google-api-php-client/src/Google_Client.php';
-//require_once HMTP_PLUGIN_PATH . 'google-api-php-client/src/contrib/Google_AnalyticsService.php';
-
 require_once HMTP_PLUGIN_PATH . 'hmtp.class.php';
 require_once HMTP_PLUGIN_PATH . 'hmtp.admin.php';
 require_once HMTP_PLUGIN_PATH . 'hmtp.opt-out.php';
